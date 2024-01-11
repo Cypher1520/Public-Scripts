@@ -1,1 +1,1 @@
-PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command %~d0\APDiags-Default.ps1
+PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command .\APDiags-Default.ps1

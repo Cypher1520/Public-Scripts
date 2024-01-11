@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>PayloadContent</key>
+        <array>
+            <dict>
+
+                <key>ExtensionData</key>
+                <dict>
+                    <key>Enable_SSO_On_All_ManagedApps</key>
+                    <integer>1</integer>
+                    <key>AppPrefixAllowList</key>
+                    <array>
+                        <string>com.microsoft.</string>
+                        <string>com.apple.</string>
+                    </array>
+                    <key>browser_sso_interaction_enabled</key>
+                    <integer>1</integer>
+                    <key>disable_explicit_app_prompt_and_autologin</key>
+                    <integer>1</integer>
+                    <key>useSiteAutoDiscovery</key>
+                    <true/>
+                </dict>
+                <key>ExtensionIdentifier</key>
+                <string>com.microsoft.CompanyPortalMac.ssoextension</string>
+                <key>TeamIdentifier</key>
+                <string>UBF8T346G9</string>
+                <key>URLs</key>
+                <array>
+                    <string>https://login.microsoftonline.com</string>
+                    <string>https://login.microsoft.com</string>
+                    <string>https://sts.windows.net</string>
+                    <string>https://login.partner.microsoftonline.cn</string>
+                    <string>https://login.chinacloudapi.cn</string>
+                    <string>https://login.microsoftonline.de</string>
+                    <string>https://login.microsoftonline.us</string>
+                    <string>https://login.usgovcloudapi.net</string>
+                    <string>https://login-us.microsoftonline.com</string>
+                </array>
+                <key>ScreenLockedBehavior</key>
+                <string>DoNotHandle</string>
+                <key>Type</key>
+                <string>Redirect</string>
+                <key>PayloadIdentifier</key>
+                <string>com.microsoft.CompanyPortalMac.ssoextension.payload</string>
+                <key>PayloadType</key>
+                <string>com.apple.extensiblesso</string>
+                <key>PayloadUUID</key>
+                <string>607A631A-B21A-4ED7-B10B-B68F2CA33885</string>
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+            </dict>
+        </array>
+        <key>PayloadDisplayName</key>
+        <string>Microsoft Azure AD SSO Extension</string>
+        <key>PayloadIdentifier</key>
+        <string>com.microsoft.CompanyPortalMac.ssoextension</string>
+        <key>PayloadType</key>
+        <string>Configuration</string>
+        <key>PayloadUUID</key>
+        <string>ED0CD117-637C-4F23-B416-444388F483E5</string>
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+    </dict>
+</plist>
