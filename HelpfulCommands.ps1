@@ -8,6 +8,7 @@
     ? - Where-Object
 
 # - Comment out
+    <# Comment between #>
 
 #equivalent to %~dp0
     $currentloc = $psscriptroot
