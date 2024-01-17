@@ -1,0 +1,1 @@
+cmd.exe /c "DEL "%USERPROFILE%\Desktop\Suspend-ManualSteps.txt" /Q"

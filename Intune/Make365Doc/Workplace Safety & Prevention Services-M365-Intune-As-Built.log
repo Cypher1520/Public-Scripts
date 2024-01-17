@@ -1,0 +1,113 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20230717154806
+Username: AzureAD\ChrisRockwell
+RunAs User: AzureAD\ChrisRockwell
+Configuration Name: 
+Machine: RIS-CX19C760253 (Microsoft Windows NT 10.0.22621.0)
+Host Application: PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command .\makem365doc.ps1
+Process ID: 26336
+PSVersion: 5.1.22621.1778
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.1778
+BuildVersion: 10.0.22621.1778
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is G:\My Drive\Scripts\Intune\Make365Doc\Workplace Safety & Prevention Services-M365-Intune-As-Built.log
+
+-Installing Package provider ...
+Install-PackageProvider : Administrator rights are required to install packages in 'C:\Program 
+Files\PackageManagement\ProviderAssemblies'. Log on to the computer with an account that has Administrator rights, and 
+then try again, or install in 'C:\Users\ChrisRockwell\AppData\Local\PackageManagement\ProviderAssemblies' by adding 
+"-Scope CurrentUser" to your command. You can also try running the Windows PowerShell session with elevated rights (Run 
+as Administrator).
+At G:\My Drive\Scripts\Intune\Make365Doc\MakeM365Doc.ps1:123 char:1
++ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotImplemented: (Microsoft.Power...PackageProvider:InstallPackageProvider) 
+[Install-PackageProvider], Exception
+    + FullyQualifiedErrorId : InstallRequiresCurrentUserScopeParameterForNonAdminUser,Microsoft.PowerShell.PackageManage
+ment.Cmdlets.InstallPackageProvider
+Install-PackageProvider : Administrator rights are required to install packages in 'C:\Program Files\PackageManagement\ProviderAssemblies'. Log on to the computer with
+an account that has Administrator rights, and then try again, or install in 'C:\Users\ChrisRockwell\AppData\Local\PackageManagement\ProviderAssemblies' by adding
+"-Scope CurrentUser" to your command. You can also try running the Windows PowerShell session with elevated rights (Run as Administrator).
+At G:\My Drive\Scripts\Intune\Make365Doc\MakeM365Doc.ps1:123 char:1
++ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotImplemented: (Microsoft.Power...PackageProvider:InstallPackageProvider) [Install-PackageProvider], Exception
+    + FullyQualifiedErrorId : InstallRequiresCurrentUserScopeParameterForNonAdminUser,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackageProvider
+
+
+-Installing modules ...
+PS>TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+>> $global:?
+False
+**********************
+Windows PowerShell transcript start
+Start time: 20230717154930
+Username: AzureAD\ChrisRockwell
+RunAs User: AzureAD\ChrisRockwell
+Configuration Name: 
+Machine: RIS-CX19C760253 (Microsoft Windows NT 10.0.22621.0)
+Host Application: PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command .\makem365doc.ps1
+Process ID: 33072
+PSVersion: 5.1.22621.1778
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.1778
+BuildVersion: 10.0.22621.1778
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is G:\My Drive\Scripts\Intune\Make365Doc\Workplace Safety & Prevention Services-M365-Intune-As-Built.log
+
+-Installing Package provider ...
+
+Name                           Version          Source           Summary
+----                           -------          ------           -------
+nuget                          2.8.5.208        https://onege... NuGet provider for the OneGet meta-package manager
+
+-Installing modules ...
+WARNING: The version '4.37.0.0' of module 'MSAL.PS' is currently in use. Retry the operation after closing the applications.
+WARNING: The version '1.1.14' of module 'PSWriteWord' is currently in use. Retry the operation after closing the applications.
+WARNING: The version '3.1.2' of module 'M365Documentation' is currently in use. Retry the operation after closing the applications.
+
+-Importing modules ...
+
+-Connecting M365Doc to Azure ...
+PS>TerminatingError(ForEach-Object): "Exception calling "Add" with "2" argument(s): "Item has already been added. Key in dictionary: 'DeviceCertificateValidity'  Key being added: 'DeviceCertificateValidity'""
+PS>TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: One or more errors occurred."
+PS>TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: No account or login hint was passed to the AcquireTokenSilent call. "
+>> TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: No account or login hint was passed to the AcquireTokenSilent call. "
+PS>TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: One or more errors occurred."
+PS>TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Integrated Windows Auth is not supported for managed users. See https://aka.ms/msal-net-iwa for details. "
+>> TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Integrated Windows Auth is not supported for managed users. See https://aka.ms/msal-net-iwa for details. "
+PS>TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: One or more errors occurred."
+PS>TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: User canceled authentication. "
+>> TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: User canceled authentication. "
+>> TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: User canceled authentication. "
+>> TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: User canceled authentication. "
+>> TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: User canceled authentication. "
+>> TerminatingError(Get-MsalToken): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: User canceled authentication. "
+The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: User canceled authentication.
+Get-MsalToken : User canceled authentication.
+At C:\Program Files\WindowsPowerShell\Modules\MSAL.PS\4.37.0.0\Get-MsalToken.ps1:314 char:53
++ ... ionResult = Get-MsalToken -Interactive -PublicClientApplication $Publ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : AuthenticationError: (Microsoft.Ident...arameterBuilder:AcquireTokenInteractiveParameterBuilder) [Write-Error], MsalClientException
+    + FullyQualifiedErrorId : GetMsalTokenFailureAuthenticationError,Get-MsalToken
+
+PS>$global:?
+False
+**********************
+Windows PowerShell transcript end
+End time: 20230717160130
+**********************

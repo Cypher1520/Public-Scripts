@@ -1,0 +1,43 @@
+<LayoutModificationTemplate 
+  xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"	
+  xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" 
+  xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout" 
+  xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout"
+  Version="1">
+  <LayoutOptions StartTileGroupCellWidth="6" />
+  <DefaultLayoutOverride>
+    <StartLayoutCollection>
+      <defaultlayout:StartLayout GroupCellWidth="6">
+        <start:Group Name="Office">
+          <start:DesktopApplicationTile Size="2x2" Column="2" Row="2" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Skype for Business 2016.lnk" />
+          <start:DesktopApplicationTile Size="2x2" Column="0" Row="0" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Excel 2016.lnk" />
+          <start:DesktopApplicationTile Size="2x2" Column="4" Row="2" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Word 2016.lnk" />
+          <start:DesktopApplicationTile Size="2x2" Column="2" Row="0" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\OneNote 2016.lnk" />
+          <start:DesktopApplicationTile Size="2x2" Column="0" Row="2" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\PowerPoint 2016.lnk" />
+          <start:DesktopApplicationTile Size="2x2" Column="4" Row="0" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Outlook 2016.lnk" />
+        </start:Group>
+        <start:Group Name="Explore">
+          <start:Tile Size="1x1" Column="1" Row="0" AppUserModelID="Microsoft.WindowsCalculator_8wekyb3d8bbwe!App" />
+          <start:Tile Size="2x2" Column="0" Row="2" AppUserModelID="Microsoft.Windows.Photos_8wekyb3d8bbwe!App" />
+          <start:DesktopApplicationTile Size="1x1" Column="2" Row="0" DesktopApplicationLinkPath="%ALLUSERSPROFILE%\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk" />
+          <start:Tile Size="1x1" Column="0" Row="0" AppUserModelID="Microsoft.WindowsAlarms_8wekyb3d8bbwe!App" />
+          <start:Tile Size="1x1" Column="3" Row="0" AppUserModelID="Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" />
+          <start:Tile Size="2x2" Column="4" Row="0" AppUserModelID="Microsoft.BingNews_8wekyb3d8bbwe!AppexNews" />
+          <start:Tile Size="1x1" Column="0" Row="1" AppUserModelID="Microsoft.WindowsMaps_8wekyb3d8bbwe!App" />
+          <start:Tile Size="2x2" Column="2" Row="2" AppUserModelID="Microsoft.WindowsStore_8wekyb3d8bbwe!App" />
+          <start:Tile Size="1x1" Column="1" Row="1" AppUserModelID="Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe!App" />
+          <start:Tile Size="2x2" Column="4" Row="2" AppUserModelID="Microsoft.BingWeather_8wekyb3d8bbwe!App" />
+          <start:DesktopApplicationTile Size="1x1" Column="2" Row="1" DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\Accessories\Internet Explorer.lnk" />
+        </start:Group>
+      </defaultlayout:StartLayout>
+    </StartLayoutCollection>
+  </DefaultLayoutOverride>
+  <CustomTaskbarLayoutCollection PinListPlacement="Replace">
+    <defaultlayout:TaskbarLayout>
+      <taskbar:TaskbarPinList>
+          <taskbar:DesktopApp DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\Accessories\Internet Explorer.lnk" />
+          <taskbar:DesktopApp DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\System Tools\File Explorer.lnk" />
+      </taskbar:TaskbarPinList>
+    </defaultlayout:TaskbarLayout>
+  </CustomTaskbarLayoutCollection>
+</LayoutModificationTemplate>

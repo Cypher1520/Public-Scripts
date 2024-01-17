@@ -1,0 +1,1 @@
+cscript Z:\Scripts\ztigather.wsf /inifile:z:\control\customsettings.ini > Z:\CustomScripts\GatherTEST\results.log

@@ -1,0 +1,9 @@
+- Open a Logfile 'C:\Windows\Logs\RemovedWin10UWPApps.log' and Ensure CMTrace opens and says 'Yes' to Default Log Viewer Prompt.
+- Analyze RemovedWin10UWPApps.log for any changes to new UWP appearing that should be removed.
+	-Confirm 2 starting logs
+- Check Defaul Browser is Internet Explorer. NOT Edge
+- Change PDF to open with Adobe Reader
+	Z:\CustomScripts\Suspend-ManualSteps
+- Check Default Mail set to Outlook - Confirm Mail-to Protocol
+- Delete Icons/Shortcuts on Desktop
+- Cortana to icon

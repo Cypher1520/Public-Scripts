@@ -1,0 +1,101 @@
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Property inifile is now = z:\control\customsettings.ini
+Microsoft Deployment Toolkit version: 6.3.8450.1000
+The task sequencer log is located at X:\windows\TEMP\SMSTSLog\SMSTS.LOG.  For task sequence failures, please consult this log.
+Write all logging text to \\CGYPRDMDT01\MDTDeploymentShare$\Logs\CAPTEST
+Validating connection to \\CGYPRDMDT01\MDTDeploymentShare$\Logs\CAPTEST
+Mapping server share: \\CGYPRDMDT01\MDTDeploymentShare$
+Already connected to server CGYPRDMDT01 as that is where this script is running from.
+------------------------- Object Initialization -------------------------
+------------------------- Initialization -------------------------
+Synchronizing the environments.
+Property DeployRoot is now = \\CGYPRDMDT01\MDTDeploymentShare$
+Property DeployDrive is now = Z:
+Property ResourceRoot is now = \\CGYPRDMDT01\MDTDeploymentShare$
+Property ResourceDrive is now = Z:
+Property OSDTargetDriveCache is now = C:
+Finished synchronizing the environments.
+Getting OS info
+Property OSCurrentVersion is now = 10.0.16299
+Property OSCurrentBuild is now = 16299
+Property OSVersion is now = WinPE
+Property IsServerOS is now = False
+Property IsServerCoreOS is now = False
+Finished getting OS info
+Getting HAL information
+Property HALName is now = acpiapic
+Finished getting HAL information
+Getting network info
+Checking network adapter: [00000001] Microsoft Hyper-V Network Adapter
+MAC address = 00:15:5D:04:45:15
+IP Address = 10.128.4.102
+IP Address = fe80::9c6:713:ea4a:f7b2
+Default Gateway = 10.128.4.1
+Property IPAddress001 is now = 10.128.4.102
+Property IPAddress002 is now = fe80::9c6:713:ea4a:f7b2
+Property MacAddress001 is now = 00:15:5D:04:45:15
+Property DefaultGateway001 is now = 10.128.4.1
+Finished getting network info
+Getting DP info
+ConfigMgr distribution point = CGYPRDMDT01
+Property SMSDP is now = CGYPRDMDT01
+Finished getting DP info
+Getting WDS server info
+Unable to determine WDS server name, probably not booted from WDS.
+Finished getting WDS server info
+Property HostName is now = MININT-B4SL13O
+Getting asset info
+Property AssetTag is now = 9286-8540-5376-0188-5481-8551-99
+Property SerialNumber is now = 9286-8540-5376-0188-5481-8551-99
+Property Make is now = Microsoft Corporation
+Property Model is now = Virtual Machine
+Property Product is now = Virtual Machine
+Property UUID is now = E3ACF8BF-DBBC-4D10-A93D-465B2B5C1148
+Property Memory is now = 1077
+Property Architecture is now = X64
+Property ProcessorSpeed is now = 3193
+Property CapableArchitecture is now = AMD64 X64 X86
+Property IsLaptop is now = False
+Property IsDesktop is now = True
+Property IsServer is now = False
+Property IsUEFI is now = False
+Property IsOnBattery is now = False
+Property SupportsX86 is now = True
+Property SupportsX64 is now = True
+Property SupportsSLAT = False
+Finished getting asset info
+Getting OS SKU info
+Unable to determine Windows SKU while in Windows PE.
+Determining the Disk and Partition Number from the Logical Drive X:\windows
+Getting virtualization info
+Property IsHypervisorRunning is now = True
+Property SupportsVT is now = False
+Property SupportsNX is now = True
+Property Supports64Bit is now = True
+Property SupportsHyperVRole is now = False
+Property IsVM is now = True
+Property VMPlatform is now = Hyper-V
+Finished getting virtualization info
+Connection succeeded to MicrosoftVolumeEncryption
+There are no encrypted drives
+Property IsBDE is now = False
+Processing the INSTALL phase.
+Event 41000 sent: Processing the INSTALL phase.
+Determining the INI file to use.
+Using COMMAND LINE ARG: Ini file = z:\control\customsettings.ini
+Finished determining the INI file to use.
+Added new custom property MYCUSTOMPROPERTY
+Using from [Settings]: Rule Priority = DEFAULT,TASKSEQUENCEID
+------ Processing the [DEFAULT] section ------
+------ Processing the [CAP1709] section ------
+------ Done processing z:\control\customsettings.ini ------
+Remapping variables.
+Property TaskSequenceID is now = CAP1709
+Property DeploymentType is now = NEWCOMPUTER
+Property OSDNetworkJoinType is now = 1
+Property OSDWorkGroupName is now = WORKGROUP
+Finished remapping variables.
+ztigather processing completed successfully.
+Event 41001 sent: ztigather processing completed successfully.
