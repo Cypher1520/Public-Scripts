@@ -1,1 +1,0 @@
-Sudo apt-get upgrade

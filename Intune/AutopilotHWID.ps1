@@ -10,7 +10,7 @@ systemreset -factoryreset
     Install-Module WindowsAutoPilotIntune
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
     Import-Module WindowsAutoPilotIntune
-    Get-WindowsAutoPilotInfo -Online <# -GroupTag "GROUPTAG"#>
+    Get-WindowsAutoPilotInfo -Online -GroupTag "AAD-S"
 
 #Create HWID CSV
     PowerShell.exe -ExecutionPolicy Bypass
