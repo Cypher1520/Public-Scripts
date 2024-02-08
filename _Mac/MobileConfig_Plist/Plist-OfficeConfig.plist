@@ -1,6 +1,4 @@
-<!-- 
-com.microsoft.office
--->
+<!-- com.microsoft.office -->
 <key>OfficeActivationEmailAddress</key>
 <string>{{mail}}</string>
 <key>OfficeAutoSignIn</key>
