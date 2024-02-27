@@ -1,7 +1,4 @@
 #!/bin/sh
-#
-#
-#
 ####################################################################################################
 #
 # The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
@@ -24,15 +21,15 @@
 ####################################################################################################
 
 getSerial=$(/usr/sbin/system_profiler SPHardwareDataType | /usr/bin/awk '/Serial/ {print $4}')
-FQDN=".example.com"
+FQDN=".r-is.tech"
 macName="$getSerial$FQDN"
 
 ####################################################################################################
 # Set ComputerName, Hostname and LocalHostName
 ####################################################################################################
 
-/usr/bin/sudo /usr/sbin/scutil --set ComputerName "$getSerial"
-/usr/bin/sudo /usr/sbin/scutil --set LocalHostName "$getSerial"
+/usr/bin/sudo /usr/sbin/scutil --set ComputerName "RIS-MA-$getSerial"
+/usr/bin/sudo /usr/sbin/scutil --set LocalHostName "RIS-MA-$getSerial"
 /usr/bin/sudo /usr/sbin/scutil --set HostName "$macName"
 
 

@@ -12,7 +12,7 @@
 			<key>PayloadIdentifier</key>
 			<string>DDF12C84-67B6-452F-A6A2-B57C8D109110</string>
 			<key>PayloadOrganization</key>
-			<string>Drakkar</string>
+			<string>Ecosystem</string>
 			<key>PayloadType</key>
 			<string>com.apple.TCC.configuration-profile-policy</string>
 			<key>PayloadUUID</key>
@@ -76,7 +76,7 @@
 	<key>PayloadIdentifier</key>
 	<string>DDF12C84-67B6-452F-A6A2-B57C8D109110</string>
 	<key>PayloadOrganization</key>
-	<string>Drakkar</string>
+	<string>Ecosystem</string>
 	<key>PayloadScope</key>
 	<string>System</string>
 	<key>PayloadType</key>

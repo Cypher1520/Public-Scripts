@@ -25,4 +25,4 @@ $files = Get-ChildItem "C:\*.*" -Exclude '$WINDOWS.~BT' -Name
 #Remove Directories including subfolder and files.
 
 $folders = "C:\Perflogs", "C:\swsetup", "C:\inetpub", "C:\Drivers", "C:\Windows\Prefetch", "C:\Users\*\AppData\Local\Temp", "C:\Users\*\AppData\LocalLow\Temp", "C:\windows\Temp"
-	foreach ($i in $folders) { if (Test-Path $i) {Remove-Item $i -Recurse} }
+	foreach ($i in $folders) { if (Test-Path $i) {Remove-Item $i -Recurse -Force} }

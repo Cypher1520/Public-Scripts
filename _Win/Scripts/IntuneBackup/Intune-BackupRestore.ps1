@@ -1,6 +1,6 @@
 <#
 	.SYNOPSIS
-	Backups up and restores Intune to github repo
+	Wrapper and promts for the backup and restore with gui script
 	.DESCRIPTION
     Checks if script installed and if not installs it
 	Will ask if you want to backup or restore, and then set variables to run the commands
@@ -8,6 +8,7 @@
 	Action, Content type, target repo, github account, personal token # (https://github.com/settings/tokens)
 	.OUTPUTS
 	Backup: Backs up the target intune tenant to target account/repo
+	Restore: Restores the target backs to sign-in intune tenant
     
 	.NOTES
 	Version:        1.0.0
@@ -16,14 +17,27 @@
 	Creation Date:  2024/01/31
 	Updated: 		2024/01/31
 	Script Author: 	https://andrewstaylor.com/2022/12/07/intune-backing-up-and-restoring-your-environment-new-and-improved/#usage
+	Script Usage:	https://andrewstaylor.com/2022/12/07/intune-backing-up-and-restoring-your-environment-new-and-improved/
+	
 	.EXAMPLE
+	
 #>
 
-#Test if script installed, install if not present.
-If (Test-Path ("$env:ProgramFiles\WindowsPowerShell\Scripts\intune-backup-restore-withgui.ps1"))
-{}
-else {
+#Test if required scripts installed, install if not present.
+If (!(Test-Path ("$env:ProgramFiles\WindowsPowerShell\Scripts\intune-backup-restore-withgui.ps1"))) { 
 	Install-Script -Name intune-backup-restore-withgui -Force -Confirm:$false
+	Write-Host "Installing Backup script" -ForegroundColor Yellow
+}
+else {
+	if (!(Test-Path ("$env:ProgramFiles\WindowsPowerShell\Modules\AzureAD"))) {
+		Write-Host "Backup script installed" -ForegroundColor Green
+		Write-Host "Installing AzureAD Module" -ForegroundColor Yellow
+		Install-Module AzureAD -AllowClobber -Force -Confirm:$false
+		
+	}
+	else {
+		Write-Host "Pre-requisites Installed, Connecting to AzureAD" -ForegroundColor Green
+	}
 }
 
 #connect to tenant
@@ -34,7 +48,7 @@ do {
 	$action = Read-Host "What would you like to do? (Backup/Restore)"
 } while ($action -eq "")
 do {
-	$selected = Read-Host "What content? (All/Selected)"
+	$selected = Read-Host "What content? (all/some)"
 } while ($selected -eq "")
 do {
 	$ownername = Read-Host "Owner name (Github account name)"
@@ -74,9 +88,10 @@ $confirm = Read-Host "(Y/N)"
 if ($confirm -ne "Y") {
 	exit
 }
-elseif ($action = "Backup") {
-	intune-backup-restore-withgui.ps1 -type backup -selected $selected -reponame $reponame -ownername $ownername -token $token
+elseif ($action -eq "Backup") {
+	intune-backup-restore-withgui.ps1 -type $action -selected $selected -reponame $reponame -ownername $ownername -token $token
 }
-elseif ($action = "Restore") {
-	intune-backup-restore-withgui.ps1 -type restore -selected $selected -reponame $reponame -ownername $ownername -token $token
+
+elseif ($action -eq "Restore") {
+	intune-backup-restore-withgui.ps1 -type $action -selected $selected -reponame $reponame -ownername $ownername -token $token
 }

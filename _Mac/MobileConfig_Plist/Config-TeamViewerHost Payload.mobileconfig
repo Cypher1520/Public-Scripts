@@ -12,7 +12,7 @@
 			<key>PayloadIdentifier</key>
 			<string>6B1BBF7F-6798-4A4E-BA17-0AA2D6A39C8C</string>
 			<key>PayloadOrganization</key>
-			<string>Equisoft</string>
+			<string>Ecosystem</string>
 			<key>PayloadType</key>
 			<string>com.apple.TCC.configuration-profile-policy</string>
 			<key>PayloadUUID</key>
@@ -76,7 +76,7 @@
 	<key>PayloadIdentifier</key>
 	<string>6B1BBF7F-6798-4A4E-BA17-0AA2D6A39C8C</string>
 	<key>PayloadOrganization</key>
-	<string>Equisoft</string>
+	<string>Ecosystem</string>
 	<key>PayloadScope</key>
 	<string>System</string>
 	<key>PayloadType</key>

@@ -20,9 +20,10 @@ $Path = "C:\temp\IntuneBackup"
 
 <# Modules and connect to tenant #>
     if (Get-Module -ListAvailable -Name MSGraphFunctions) {
-        Write-Host "MSGraphFunctions Installed"
+        Write-Host "MSGraphFunctions Installed" -ForegroundColor Green
     }
     else {
+        Write-Host "Installing Module" -ForegroundColor Yellow
         Install-Module -Name MSGraphFunctions
     }
 
@@ -30,6 +31,7 @@ $Path = "C:\temp\IntuneBackup"
         Write-Host "IntuneBackupAndRestore Installed"
     }
     else {
+        Write-Host "Installing Backup Module" -ForegroundColor Yellow
         Install-Module -Name IntuneBackupAndRestore
     }
 
