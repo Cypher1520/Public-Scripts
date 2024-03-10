@@ -19,7 +19,7 @@ systemreset -factoryreset
     $env:Path += ";E:\Program Files\WindowsPowerShell\Scripts"
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
     Install-Script -Name Get-WindowsAutoPilotInfo
-    Get-WindowsAutoPilotInfo -OutputFile LeavittAPHWID.csv
+    Get-WindowsAutoPilotInfo -OutputFile HWIDCucm.csv
 
 #New Online
     PowerShell.exe -ExecutionPolicy Bypass
