@@ -31,3 +31,18 @@
 
 #Environmental Variables
     Get-Childitem -Path Env:* | Sort-Object Name
+
+#Uninstall Modules
+    $AzModules = Get-InstalledModule | where { $_.Name -like "Az" }
+
+    # Generate a list of Az PowerShell modules to uninstall
+    $AzModules = ($AzVersions | ForEach-Object {
+            Import-Clixml -Path (Join-Path -Path $_.InstalledLocation -ChildPath PSGetModuleInfo.xml)
+        }).Dependencies.Name | Sort-Object -Descending -Unique
+
+    # Remove the Az modules from memory and then uninstall them
+    $AzModules | ForEach-Object {
+        Remove-Module -Name $_.Name -ErrorAction SilentlyContinue
+        Write-Output "Attempting to uninstall module: $_.Name"
+        Uninstall-Module -Name $_.Name -AllVersions
+    }

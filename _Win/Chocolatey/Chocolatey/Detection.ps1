@@ -1,7 +1,6 @@
 <#
     .NOTES
-        https://community.chocolatey.org/packages
-        Must first have Chocolatey installed
+        Detection script for ......
 
     .DESCRIPTION
         Intune Commands
@@ -9,23 +8,35 @@
             Uninstall: powershell.exe -executionpolicy bypass .\uninstall.ps1
 
     .EXAMPLE
-        ------------- Detection -------------
-            $app = "APPNAME"
-            $localprograms = choco list
-            if ($localprograms -like "*$app*")
-            {
-                Write-Host "Found $app" 
-                Return 0 
-                Exit 0
+        Detect from registry
+            $path = "HKLM:\SOFTWARE\..."
+            $value = "VALUE"
+
+            #Detection Test
+            if (Test-Path -Path $path) {
+            Write-Host "Found Registry Entry" 
+            Return 0 
+            Exit 0
             }
+        
+        Detect File
+            $file = "EXECUTABLE.exe"
+            $path = "C:\Program Files\..."
+
+            #Detection Test
+            if (Test-Path ($path + '\' + $file) ) {
+            Write-Host "Found $file" 
+            Return 0 
+            Exit 0
+}
 #>
 
-$app = "Chocolatey"
+#Variables
+$target = "C:\ProgramData\chocolatey\choco.exe"
 
-$localprograms = choco list
-if ($localprograms -like "*$app*")
-{
-    Write-Host "Found $app" 
+#Detection Test
+if (Test-Path ($target) ) {
+    Write-Host "Found $target" 
     Return 0 
     Exit 0
 }

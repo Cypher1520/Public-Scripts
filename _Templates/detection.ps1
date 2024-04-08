@@ -32,11 +32,12 @@
 #>
 
 #Variables
-$target = "FILEPATH"
+$path = "$env:ProgramData\AutopilotConfig\"
+$file = "<TAGFILE>" + ".tag"
 
 #Detection Test
-if (Test-Path ($target) ) {
-    Write-Host "Found $target" 
+if (Test-Path ($path+$file) ) {
+    Write-Host "Found $file" -ForegroundColor Green
     Return 0 
     Exit 0
 }

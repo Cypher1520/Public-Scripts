@@ -4,7 +4,7 @@
  
 .DESCRIPTION
     This script will delete all of the duplicate feature updates excluding the profiles containing specified display name of "assigned"
-    If you need to exclude a different profile name edit line 42
+    To edit what name to delete, edit line 42
         
 .EXAMPLE
    .\Intune-DeleteFeatureUpdates.ps1
