@@ -17,7 +17,7 @@ if ($option -eq 1) {
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
     Import-Module WindowsAutoPilotIntune
     $groupTag = Read-Host Group Tag
-    Get-WindowsAutopilotInfo -Online -GroupTag "$groupTag" 
+    Get-WindowsAutopilotInfo -Online -GroupTag $groupTag
 }
 
 elseif ($option -eq 2) {

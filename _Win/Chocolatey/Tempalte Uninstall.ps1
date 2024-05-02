@@ -15,7 +15,7 @@
             $localprograms = choco list
             if ($localprograms -like "*$app*")
             {
-                C:\ProgramData\chocolatey\choco.exe uninstall $app -y
+                choco uninstall $app -y
             }
 #>
 
@@ -23,5 +23,5 @@ $app = "APP"
 $localprograms = choco list
 if ($localprograms -like "*$app*")
 {
-    C:\ProgramData\chocolatey\choco.exe uninstall $app -y
+    choco uninstall $app -y --remove-dependencies
 }

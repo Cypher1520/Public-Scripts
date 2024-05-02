@@ -18,7 +18,7 @@
 # 09Dec2022	Added -force overrides for
 #		NuGet provider and modules
 # -----------------------------------------------
-$ProgVer = "v2.0-GKW"
+$ProgVer = "v2.1-LK"
 
 # -----------------------------------------------
 # TIP: You might want to modify the included Word
@@ -130,7 +130,7 @@ write-host ""
 write-host "-Installing modules ... " -foreground yellow
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module MSAL.PS -allowclobber -Scope AllUsers -Force
-Install-Module PSWriteWord -allowclobber -Scope AllUsers -Force
+Install-Module PSWriteOffice -allowclobber -Scope AllUsers -Force
 Install-Module M365Documentation -allowclobber -Scope AllUsers -Force
 
 
@@ -140,7 +140,7 @@ Install-Module M365Documentation -allowclobber -Scope AllUsers -Force
 write-host ""
 write-host "-Importing modules ... " -foreground yellow
 Import-Module MSAL.PS
-Import-Module PSWriteWord
+Import-Module PSWriteOffice
 Import-Module M365Documentation
 
 
@@ -148,7 +148,7 @@ Import-Module M365Documentation
 # Copy Insight Word template file to script location
 # Note: Destination might need to be changed if PS modules are updated
 # -------------------------------------------------------------------
-Copy-Item "$path\Template.docx" "C:\Program Files\WindowsPowerShell\Modules\M365Documentation\3.1.2\Data\Template.docx" -Force
+Copy-Item "$path\Template.docx" "C:\Program Files\WindowsPowerShell\Modules\M365Documentation\3.2.2\Data\Template.docx" -Force
 
 
 # -----------------------------------------------

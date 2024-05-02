@@ -20,11 +20,12 @@
             }
 #>
 
-$app = "APP"
-$localprograms = choco list
-if ($localprograms -like "*$app*")
-{
-    Write-Host "Found $app" 
+#Variables
+$target = "<FILEPATH/TARGETPATH>"
+
+#Detection Test
+if (Test-Path ($target) ) {
+    Write-Host "Found $target" 
     Return 0 
     Exit 0
 }

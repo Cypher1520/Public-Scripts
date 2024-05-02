@@ -34,15 +34,15 @@ goto :Variables
 
 :Variables
     set logdir=C:\ProgramData\AutopilotConfig
-    set filename=<FILENAME>
+    set filename1=<FILENAME>
     set installer="%~dp0Media\%filename%"
     set logfile="C:\ProgramData\AutopilotConfig\%filename%.log"
 
 ::PreInstall
     if not exist %logdir% md %logdir%
 
-::install
-    echo Installing %filename%...
+::Install
+    echo Installing %filename1%...
 
 ::PostInstall
 

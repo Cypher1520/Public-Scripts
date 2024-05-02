@@ -1,6 +1,6 @@
 <#
     .NOTES
-        Detection script for ......
+        Detection script for Chocolatey
 
     .DESCRIPTION
         Intune Commands

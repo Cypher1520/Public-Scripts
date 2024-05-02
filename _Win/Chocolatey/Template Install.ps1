@@ -15,19 +15,25 @@
             $localprograms = choco list
             if ($localprograms -like "*$app*")
             {
-                C:\ProgramData\chocolatey\choco.exe upgrade $app -y
+                choco upgrade $app -y
             }
             Else
             {
-                C:\ProgramData\chocolatey\choco.exe install $app -y
+                choco install $app -y
             }
 #>
 
-$app = "APP"
-$localprograms = choco list
-if ($localprograms -like "*$app*") {
-    C:\ProgramData\chocolatey\choco.exe upgrade $app -y
+if (!(Test-Path "C:\ProgramData\chocolatey\choco.exe")) {
+    Write-host Chocolatey not installed, installing now
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
-Else {
-    C:\ProgramData\chocolatey\choco.exe install $app -y
+else {
+    $app = "APP"
+    $localprograms = choco list
+    if ($localprograms -like "*$app*") {
+        choco upgrade $app -y
+    }
+    Else {
+        choco install $app -y
+    }
 }

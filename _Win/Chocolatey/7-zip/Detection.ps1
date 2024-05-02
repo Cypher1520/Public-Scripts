@@ -20,7 +20,7 @@
             }
 #>
 
-$app = "7zip.install"
+$app = "7zip"
 $localprograms = choco list
 if ($localprograms -like "*$app*")
 {
