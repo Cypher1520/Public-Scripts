@@ -10,27 +10,18 @@
             Uninstall: powershell.exe -executionpolicy bypass .\uninstall.ps1
 
     .EXAMPLE
-        ------------- Install -------------
+        ------------- Uninstall -------------
             $app = "APPNAME"
             $localprograms = choco list
             if ($localprograms -like "*$app*")
             {
-                C:\ProgramData\chocolatey\choco.exe upgrade $app -y
-            }
-            Else
-            {
-                C:\ProgramData\chocolatey\choco.exe install $app -y
+                choco uninstall $app -y
             }
 #>
 
-$app = "7zip"
+$app = "remote-desktop-client"
 $localprograms = choco list
 if ($localprograms -like "*$app*")
 {
-    C:\ProgramData\chocolatey\choco.exe upgrade $app -y
-    Write-Host "7zip installed"
-}
-Else
-{
-    C:\ProgramData\chocolatey\choco.exe install $app -y
+    choco uninstall $app -y --remove-dependencies
 }

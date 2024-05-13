@@ -2,7 +2,6 @@
     .NOTES
         https://community.chocolatey.org/packages
         Must first have Chocolatey installed
-        https://www.thelazyadministrator.com/2020/02/05/intune-chocolatey-a-match-made-in-heaven/
 
     .DESCRIPTION
         Intune Commands
@@ -10,21 +9,23 @@
             Uninstall: powershell.exe -executionpolicy bypass .\uninstall.ps1
 
     .EXAMPLE
-        ------------- Uninstall -------------
+        ------------- Detection -------------
             $app = "APPNAME"
             $localprograms = choco list
             if ($localprograms -like "*$app*")
             {
-                C:\ProgramData\chocolatey\choco.exe uninstall $app -y
+                Write-Host "Found $app" 
+                Return 0 
+                Exit 0
             }
 #>
 
-$app = "7zip"
-$localprograms = choco list
-if ($localprograms -like "*$app*")
-{
-    $uninstall = $localprograms -like "*$app*"
-    foreach ($u in $uninstall){
-        choco.exe uninstall $u -y
-    } 
+#Variables
+$target = "C:\Program Files\Remote Desktop\msrdcw.exe"
+
+#Detection Test
+if (Test-Path ($target) ) {
+    Write-Host "Found $target" 
+    Return 0 
+    Exit 0
 }

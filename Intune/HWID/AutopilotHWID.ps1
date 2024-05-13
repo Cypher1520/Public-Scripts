@@ -1,6 +1,4 @@
-# ------------------------------------
-<# Factory Reset from CMD
-# systemreset -factoryreset
+<# Factory Reset from CMD - systemreset -factoryreset
 #>
 
 Write-Host HWID Capture Options -ForegroundColor Yellow

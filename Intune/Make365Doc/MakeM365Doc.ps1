@@ -130,9 +130,8 @@ write-host ""
 write-host "-Installing modules ... " -foreground yellow
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module MSAL.PS -allowclobber -Scope AllUsers -Force
-Install-Module PSWriteOffice -allowclobber -Scope AllUsers -Force
 Install-Module M365Documentation -allowclobber -Scope AllUsers -Force
-
+Install-Module PSWriteOffice -allowclobber -Scope AllUsers -Force
 
 # -----------------------------------------------
 # Import modules (into memory for script)
