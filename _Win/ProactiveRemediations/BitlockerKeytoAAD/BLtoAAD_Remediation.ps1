@@ -223,7 +223,7 @@ Else {
 [Int]$Global:LogMaxSize = 250KB
 
 ## Set registry variable(s)
-[String]$Global:DefaultRegistryKey = "HKLM:\SOFTWARE\InformantSystems\BitLocker" ## <---- Change "CompanyName" to your own company name.
+[String]$Global:DefaultRegistryKey = "HKLM:\SOFTWARE\SLA\BitLocker" ## <---- Change "CompanyName" to your own company name.
 [String]$Global:DefaultRegistryName = "Drive_{0}_BitLockerBackupToAAD"
 [String]$Global:DefaultRegistryType = "STRING"
 [String]$Global:DefaultRegistryValue = "True"
@@ -231,7 +231,7 @@ Else {
 ## Set event log variable(s)
 [String]$Global:DefaultEventProviderName = "Microsoft-Windows-BitLocker-API"
 [String]$Global:DefaultEventMessage = "volume {0} was backed up successfully to your Azure AD."
-[DateTime]$Global:DefaultEventTime = "01/01/2022 00:00:00" ## <---- MM/dd/yyyy HH:mm:ss
+[DateTime]$Global:DefaultEventTime = "01/01/2024 00:00:00" ## <---- MM/dd/yyyy HH:mm:ss
 [Int]$Global:DefaultEventID = "845"
 
 ## Set exit variable(s)

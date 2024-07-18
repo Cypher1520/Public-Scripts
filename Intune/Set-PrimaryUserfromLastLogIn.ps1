@@ -516,5 +516,3 @@ Foreach ($Device in $Devices)
 }
 
 Stop-Transcript
-
-lZ0JwyLVkiU6

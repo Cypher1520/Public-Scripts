@@ -2,7 +2,7 @@
 ==================================================
 
 Script Name:     Detection-Account.ps1
-Description:     Checks for LAPSAdmin account for Windows LAPS Management
+Description:     Checks for Admin account
 Notes:           Customize the script by editing Variable for admin account name.
 
 ==================================================
