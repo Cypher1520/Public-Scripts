@@ -1,7 +1,7 @@
 if (Test-Path D:) {
     $size = (Get-WmiObject -Class Win32_LogicalDisk | ? { $_. DeviceID -eq "D:" }).DriveType
     if (!($size -eq 2 -or 5)) {
-        Get-Partition -DriveLetter D | Set-Partition -NewDriveLetter Z
+        Get-WmiObject -Class Win32_volume -Filter "DriveLetter = 'd:'" | Set-WmiInstance -Arguments @{DriveLetter = 'Z:'}
     }
     else {
         Label D: "Data"

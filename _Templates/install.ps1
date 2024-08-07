@@ -42,7 +42,6 @@ if ("$env:PROCESSOR_ARCHITEW6432" -ne "ARM64") {
     }
 }
 
-
 # PreInstall
 $logDest = "$($env:ProgramData)\AutopilotConfig"
 if (!(Test-Path $logDest)) {

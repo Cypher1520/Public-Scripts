@@ -33,7 +33,7 @@
 
 #Variables
 $path = "$env:ProgramData\AutopilotConfig\"
-$file = "<TAGFILE>" + ".tag"
+$file = "<FILENAME>" + ".tag"
 
 #Detection Test
 if (Test-Path ($path+$file) ) {
