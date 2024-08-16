@@ -4,24 +4,12 @@
     Email: chris@r-is.tech | chris.rockwell@insight.com
 
 .DESCRIPTION
-    ---------------------------------------
-    References
-    ---------------------------------------
-        Start-Process "$uninstallFile" -Verb RunAs -ArgumentList $argumentList -Wait
-        $products = Get-WmiObject win32_product | where { $_.name -eq "<App1>" -or $_.name -eq "<App2>"}
-        foreach ($product in $products) {
-            Write-Host Uninstalling $product.Name -ForegroundColor Green
-            Start-Process "C:\Windows\System32\msiexec.exe" -ArgumentList "/x $($product.IdentifyingNumber) /qn /norestart" -Wait
-            }
-        Remove-Item -Path "HKLM:\REGISTRYKEY" -Confirm:$false -Recurse
-
-    Get installed win32_products
-        get-wmiobject Win32_Product | Sort-Object -Property Name | Format-Table IdentifyingNumber, Name, Version -AutoSize
-        get-wmiobject Win32_Product | Sort-Object -Property Name | Format-Table Name, Version -AutoSize
+    Uninstalls applications from Winget
+    Use "Winget search 'appname' to find the app ID's to use when calling uninstall.ps1"
 
 .Example
     Intune uninstall command
-        powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -command .\uninstall.ps1
+        powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -command .\uninstall.ps1 -id <APPID CASE SENSITIVE>
 #>
 
 Param
@@ -66,6 +54,10 @@ if(!$wgeterror) {
     if (Test-Path "$($logDest)\$($ID).tag") {
     Write-Host Removing $ID tag file -ForegroundColor Green
     Remove-Item -Path "$($logDest)\$($ID).tag"
+    Write-Host "Uninstall complete, Result: $($result)" -ForegroundColor Green
+    }
+    else {
+        Write-Host "Install not complete, Result: $($result)" -ForegroundColor Red
     }
 }
 
