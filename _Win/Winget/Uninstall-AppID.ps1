@@ -24,9 +24,12 @@
         powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -command .\uninstall.ps1
 #>
 
-# Variables - Remove comments for the alternate uninstall methods if needed
-$fileName = "<FILENAME.msi>"
-#$uninstallFile = "<FILEPATH>.exe"
+Param
+(
+    [parameter(Mandatory = $true)]
+    [String[]]
+    $ID
+)
 
 # Make sure 64-bit PowerShell - Relaunch if not
 if ("$env:PROCESSOR_ARCHITEW6432" -ne "ARM64") {
@@ -42,28 +45,30 @@ $logDest = "$($env:ProgramData)\AutopilotConfig"
 if (!(Test-Path $logDest)) {
     New-Item -Path "$($env:ProgramData)" -Name "AutopilotConfig" -ItemType Directory
 }
-Start-Transcript "$logDest\Transcripts\$fileName-uninstall.log" -Append
+Start-Transcript "$logDest\Transcripts\$ID-Uninstall.log" -Append
+# resolve winget_exe
+$winget_exe = Resolve-Path "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_*__8wekyb3d8bbwe\winget.exe"
+if ($winget_exe.count -gt 1) {
+    $winget_exe = $winget_exe[-1].Path
+}
 
 # Uninstall
-Write-Host Uninstalling $fileName...
-#Use this when program exists in the win32_products list, if not remove and replace with appropriate uninstall string, see references in description.
-$products = Get-WmiObject win32_product | where { $_.name -like "*<App1>*" } #add ' -or $_.name -like "*<App2>*" ' to remove multiple products
-foreach ($product in $products) {
-    Write-Host Uninstalling $product.Name -ForegroundColor Cyan
-    Start-Process "C:\Windows\System32\msiexec.exe" -ArgumentList "/x $($product.IdentifyingNumber) /qn /norestart" -Wait
-    }
+if (!$winget_exe) { 
+    $wgeterror = "Winget not installed" 
+    Write-Error $wgeterror 
+}
+else {
+    $result = (winget uninstall --exact --id $ID --silent --scope=machine).split("\")[-1]
+}
 
 # PostUninstall
-if (Test-Path "$($logDest)\$($fileName).tag") {
-    Write-Host Removing $fileName tag file -ForegroundColor Green
-    Remove-Item -Path "$($logDest)\$($fileName).tag"
-}
-$logFile = "$logDest\$fileName.log"
-if (Test-Path $logFile) {
-    Write-Host Removing $logFile -ForegroundColor Green
-    Remove-Item -Path $logFile
+if(!$wgeterror) {    
+    if (Test-Path "$($logDest)\$($ID).tag") {
+    Write-Host Removing $ID tag file -ForegroundColor Green
+    Remove-Item -Path "$($logDest)\$($ID).tag"
+    }
 }
 
 # Quit
 Stop-Transcript
-Exit $lastexitcode
+Exit $result

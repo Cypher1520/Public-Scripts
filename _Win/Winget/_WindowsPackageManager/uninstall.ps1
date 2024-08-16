@@ -25,8 +25,7 @@
 #>
 
 # Variables - Remove comments for the alternate uninstall methods if needed
-$fileName = "<FILENAME.msi>"
-#$uninstallFile = "<FILEPATH>.exe"
+$fileName = "Windows Package Manager"
 
 # Make sure 64-bit PowerShell - Relaunch if not
 if ("$env:PROCESSOR_ARCHITEW6432" -ne "ARM64") {
@@ -46,12 +45,7 @@ Start-Transcript "$logDest\Transcripts\$fileName-uninstall.log" -Append
 
 # Uninstall
 Write-Host Uninstalling $fileName...
-#Use this when program exists in the win32_products list, if not remove and replace with appropriate uninstall string, see references in description.
-$products = Get-WmiObject win32_product | where { $_.name -like "*<App1>*" } #add ' -or $_.name -like "*<App2>*" ' to remove multiple products
-foreach ($product in $products) {
-    Write-Host Uninstalling $product.Name -ForegroundColor Cyan
-    Start-Process "C:\Windows\System32\msiexec.exe" -ArgumentList "/x $($product.IdentifyingNumber) /qn /norestart" -Wait
-    }
+Remove-AppPackage -Package "Microsoft.DesktopAppInstaller"
 
 # PostUninstall
 if (Test-Path "$($logDest)\$($fileName).tag") {

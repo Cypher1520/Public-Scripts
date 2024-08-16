@@ -14,7 +14,7 @@
 
 .Example
     Intune install command
-        powershell.exe -ExecutionPolicy Bypass .\install.ps1
+        powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -command .\install.ps1
 #>
 
 # Variables - edit this list

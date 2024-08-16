@@ -15,6 +15,7 @@ function Write-Log {
 
 # List of built-in apps to remove
 $UninstallPackages = @(
+    #Default
     "Clipchamp.Clipchamp"
     "Microsoft.BingNews"
     "Microsoft.BingWeather"
@@ -32,6 +33,29 @@ $UninstallPackages = @(
     "Microsoft.windowscommunicationsapps"
     "Microsoft.WindowsFeedbackHub"
     "Microsoft.WindowsMaps"
+    "Microsoft.YourPhone"
+    "Microsoft.ZuneMusic"
+    "Microsoft.ZuneVideo"
+    "MicrosoftTeams"
+    "Microsoft.BingTranslator"
+    "Microsoft.BingSports"
+    "Microsoft.BingFinance"
+    "Microsoft.MinecraftUWP"
+    "Microsoft.BingFoodAndDrink"
+    "Microsoft.BingHealthAndFitness"
+    "Microsoft.BingTravel"
+    "Microsoft.WindowsReadingList"
+    "Microsoft.Messaging"
+    "Microsoft.Office.Sway"
+    "Microsoft.WindowsPhone"
+    "Microsoft.Wallet"
+    "Microsoft.Print3D"
+    "Microsoft.MicrosoftPowerBIForWindows"
+    "Microsoft.FreshPaint"
+    "Microsoft.3DBuilder"
+    
+<#
+    #Extra
     "Microsoft.Xbox.TCUI"
     "Microsoft.XboxApp"
     "Microsoft.XboxGameCallableUI"
@@ -39,10 +63,9 @@ $UninstallPackages = @(
     "Microsoft.XboxGamingOverlay"
     "Microsoft.XboxIdentityProvider"
     "Microsoft.XboxSpeechToTextOverlay"
-    "Microsoft.YourPhone"
-    "Microsoft.ZuneMusic"
-    "Microsoft.ZuneVideo"
-    "MicrosoftTeams"
+    "Microsoft.WindowsSoundRecorder"
+    "Microsoft.MicrosoftStickyNotes"
+#>
 )
 
 # List of programs to uninstall
