@@ -21,7 +21,7 @@ Param
 
 # PreInstall
 $logDest = "$($env:ProgramData)\_Intune"
-    New-Item -Path "$($env:ProgramData)" -Name "_Intune" -ItemType Directory -ErrorAction SilentlyContinue
+New-Item -Path "$($env:ProgramData)" -Name "_Intune" -ItemType Directory -ErrorAction SilentlyContinue
 Start-Transcript "$logDest\Transcripts\$ID-install.log" -Append
 
 # resolve winget_exe
@@ -40,13 +40,13 @@ else {
 # PostInstall
 #creates tag file, detects if the tag file is there for testing scenarios, not necessary when a new install
 if (!$wgeterror) {
-        Write-Host Creating Tag file. -ForegroundColor Cyan
-        New-Item -Path "$($logDest)" -Name "$($ID).tag" -ItemType File -Value "Tag" -ErrorAction SilentlyContinue
-        Write-Host "Install complete, Result: $($result)" -ForegroundColor Green
+    Write-Host Creating Tag file. -ForegroundColor Cyan
+    New-Item -Path "$($logDest)" -Name "$($ID).tag" -ItemType File -Value "Tag" -ErrorAction SilentlyContinue
+    Write-Host "Install complete, Result: $($result)" -ForegroundColor Green
         
-        Stop-Transcript
-        Exit 0
-    }
+    Stop-Transcript
+    Exit 0
+}
 else {
     if ($null -eq $result) {
         $result = $wingeterror
@@ -55,4 +55,4 @@ else {
     
     Stop-Transcript
     Exit 1
-    }
+}

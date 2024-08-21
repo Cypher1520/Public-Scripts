@@ -35,13 +35,10 @@ if (!(Test-Path $logDest)) {
 }
 Start-Transcript "$logDest\Transcripts\$ID-Uninstall.log" -Append
 # resolve winget_exe
-$winget_exe = Resolve-Path "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_*__8wekyb3d8bbwe\winget.exe"
-if ($winget_exe.count -gt 1) {
-    $winget_exe = $winget_exe[-1].Path
-}
+$winget_exe = winget ls --accept-source-agreements
 
 # Uninstall
-if (!$winget_exe) { 
+if (!$winget_exe[13]) { 
     $wgeterror = "Winget not installed" 
     Write-Error $wgeterror 
 }
@@ -50,17 +47,21 @@ else {
 }
 
 # PostUninstall
-if(!$wgeterror) {    
+if (!$wgeterror[13]) {    
     if (Test-Path "$($logDest)\$($ID).tag") {
-    Write-Host Removing $ID tag file -ForegroundColor Green
-    Remove-Item -Path "$($logDest)\$($ID).tag"
-    Write-Host "Uninstall complete, Result: $($result)" -ForegroundColor Green
+        Write-Host Removing $ID tag file -ForegroundColor Green
+        Remove-Item -Path "$($logDest)\$($ID).tag"
+        Write-Host "Uninstall complete, Result: $($result)" -ForegroundColor Green
+
+        Stop-Transcript
+        Exit 0
     }
     else {
-        Write-Host "Install not complete, Result: $($result)" -ForegroundColor Red
+        if ($null -eq $result) {
+            $result = $wingeterror
+        }
+        Write-Host "Uninstall not complete, Result: $result" -ForegroundColor Red
+        Stop-Transcript 
+        Exit 1
     }
 }
-
-# Quit
-Stop-Transcript
-Exit $result
