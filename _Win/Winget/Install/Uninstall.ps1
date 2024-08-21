@@ -29,9 +29,9 @@ if ("$env:PROCESSOR_ARCHITEW6432" -ne "ARM64") {
 }
 
 #PreUninstall
-$logDest = "$($env:ProgramData)\AutopilotConfig"
+$logDest = "$($env:ProgramData)\_Intune"
 if (!(Test-Path $logDest)) {
-    New-Item -Path "$($env:ProgramData)" -Name "AutopilotConfig" -ItemType Directory
+    New-Item -Path "$($env:ProgramData)" -Name "_Intune" -ItemType Directory
 }
 Start-Transcript "$logDest\Transcripts\$ID-Uninstall.log" -Append
 # resolve winget_exe

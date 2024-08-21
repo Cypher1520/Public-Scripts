@@ -1,22 +1,11 @@
 <#
 .NOTES
-    Detection script for ......
+    Detection script for Winget Application
 
 .DESCRIPTION
     Custom Detection script detects if the app targeted is installed.
 
 .EXAMPLE
-    Detect from registry
-        $path = "HKLM:\SOFTWARE\..."
-        $value = "VALUE"
-
-        #Detection Test
-        if (Test-Path -Path $path) {
-        Write-Host "Found Registry Entry" 
-        Return 0 
-        Exit 0
-        }
-    
     Detect File
         $path = "$env:ProgramData\AutopilotConfig\"
         $file = "<TAGFILE>" + ".tag"
@@ -27,13 +16,25 @@
             Return 0 
             Exit 0
         }
+
+    Detect from registry
+        $path = "HKLM:\SOFTWARE\..."
+        $value = "VALUE"
+
+        #Detection Test
+        if (Test-Path -Path $path) {
+        Write-Host "Found Registry Entry" 
+        Return 0 
+        Exit 0
+        }
 #>
 
-#Variables
-$path = "$env:ProgramData\AutopilotConfig\"
-$file = "<APP ID>" + ".tag"
+#Variable
+$ID = "7zip.7zip"
 
 #Detection Test
+$path = "$env:ProgramData\_Intune\"
+$file = $ID + ".tag"
 if (Test-Path ($path+$file) ) {
     Write-Host "Found $file" -ForegroundColor Green
     Return 0 
