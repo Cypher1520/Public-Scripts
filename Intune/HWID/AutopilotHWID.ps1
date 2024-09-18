@@ -1,5 +1,4 @@
-<# Factory Reset from CMD - systemreset -factoryreset
-#>
+<# Factory Reset from CMD - "systemreset -factoryreset" #>
 
 Write-Host HWID Capture Options -ForegroundColor Yellow
 Write-Host "------------"
@@ -14,8 +13,11 @@ if ($option -eq 1) {
     Install-Module WindowsAutoPilotIntune -Force -Confirm:$false
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
     Import-Module WindowsAutoPilotIntune
-    $groupTag = Read-Host Group Tag
-    Get-WindowsAutopilotInfo -Online -GroupTag $groupTag
+    $groupTag = Read-Host "Group Tag: if none hit Enter"
+    if ($null -ne $groupTag) {
+        Get-WindowsAutopilotInfo -Online -GroupTag $groupTag
+    }
+    
 }
 
 elseif ($option -eq 2) {

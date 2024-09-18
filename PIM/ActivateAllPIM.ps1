@@ -1,6 +1,6 @@
 ########################## Config ##########################
 
-$expirationDuration = "PT2H"                               # Activation Duration
+$expirationDuration = "PT4H"                               # Activation Duration
 $justification = "Execute changes to environment"          # Justification for accessing role
 
 ########################## Common Role IDs ##########################
@@ -11,6 +11,7 @@ $justification = "Execute changes to environment"          # Justification for a
 # Security Admin:              fb1c8493-542b-48eb-b624-b4c8fea62acd #
 ######################################################################
 
+<#
 #Role Selection
 Write-Host "    1. Contributor"
 Write-Host "    2. Resource Policy Contributor"
@@ -31,6 +32,12 @@ elseif ($roleid -eq 4) {
     $roleid = "fb1c8493-542b-48eb-b624-b4c8fea62acd"    #Security Admin
 }
 
+#>
+
+$roleid1 = "b24988ac-6180-42a0-ab88-20f7382dd24c"
+$roleid2 = "36243c78-bf99-498c-9df9-86d9f8d28608"
+$roleid3 = "fb1c8493-542b-48eb-b624-b4c8fea62acd"
+
 ######################################################################
 
 $subdump = (Get-AzSubscription | Where-Object { $_.Name -Like "SUB-*" -and $_.Name -notlike "SUB-ENT-*" -and $_.Name -notlike "*PPJV*" -and $_.Name -notlike "*Everlink*" })
@@ -40,7 +47,39 @@ foreach ($item in $subdump) {
     $guid = New-Guid
     $startTime = Get-Date -Format o 
     $scope = "/subscriptions/$($item.id)"
-    $roledefinitionid = "/subscriptions/$($item.id)/providers/Microsoft.Authorization/roleDefinitions/$roleId"
+    $roledefinitionid = "/subscriptions/$($item.id)/providers/Microsoft.Authorization/roleDefinitions/$roleId1"
+    $principalId = (Get-AzContext).Account.ExtendedProperties.HomeAccountId.Split('.')[0]
+
+    New-AzRoleAssignmentScheduleRequest -Name $guid `
+        -Scope $scope `
+        -ExpirationDuration $expirationDuration `
+        -ExpirationType AfterDuration `
+        -PrincipalId $principalId `
+        -RequestType SelfActivate `
+        -RoleDefinitionId $roledefinitionID `
+        -ScheduleInfoStartDateTime $startTime `
+        -Justification $justification
+
+    $guid = New-Guid
+    $startTime = Get-Date -Format o 
+    $scope = "/subscriptions/$($item.id)"
+    $roledefinitionid = "/subscriptions/$($item.id)/providers/Microsoft.Authorization/roleDefinitions/$roleId2"
+    $principalId = (Get-AzContext).Account.ExtendedProperties.HomeAccountId.Split('.')[0]
+
+    New-AzRoleAssignmentScheduleRequest -Name $guid `
+        -Scope $scope `
+        -ExpirationDuration $expirationDuration `
+        -ExpirationType AfterDuration `
+        -PrincipalId $principalId `
+        -RequestType SelfActivate `
+        -RoleDefinitionId $roledefinitionID `
+        -ScheduleInfoStartDateTime $startTime `
+        -Justification $justification
+
+    $guid = New-Guid
+    $startTime = Get-Date -Format o 
+    $scope = "/subscriptions/$($item.id)"
+    $roledefinitionid = "/subscriptions/$($item.id)/providers/Microsoft.Authorization/roleDefinitions/$roleId3"
     $principalId = (Get-AzContext).Account.ExtendedProperties.HomeAccountId.Split('.')[0]
 
     New-AzRoleAssignmentScheduleRequest -Name $guid `

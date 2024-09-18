@@ -1,3 +1,5 @@
+#Source https://github.com/Azure/Microsoft-Defender-for-Cloud/tree/main/Powershell%20scripts/Defender%20for%20Servers%20on%20resource%20level
+
 $failureCount = 0
 $successCount = 0
 $vmSuccessCount = 0

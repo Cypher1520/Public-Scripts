@@ -30,12 +30,10 @@
 #>
 
 #Variable
-$ID = "VideoLAN.VLC"
 
 #Detection Test
-$path = "$env:ProgramData\_Intune\"
-$file = $ID + ".tag"
-if (Test-Path ($path+$file) ) {
+$path = "$env:ProgramFiles\7-Zip\7zFM.exe"
+if (Test-Path ($path) ) {
     Write-Host "Found $file" -ForegroundColor Green
     Return 0 
     Exit 0
