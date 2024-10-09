@@ -12,7 +12,7 @@
 			<key>PayloadIdentifier</key>
 			<string>ECD0D1FB-14CD-4FAE-8C3F-C97AAAED9278</string>
 			<key>PayloadOrganization</key>
-			<string>Ecosystem</string>
+			<string>RIS ltd.</string>
 			<key>PayloadType</key>
 			<string>com.apple.TCC.configuration-profile-policy</string>
 			<key>PayloadUUID</key>
@@ -46,7 +46,7 @@
 	<key>PayloadIdentifier</key>
 	<string>ECD0D1FB-14CD-4FAE-8C3F-C97AAAED9278</string>
 	<key>PayloadOrganization</key>
-	<string>Ecosystem</string>
+	<string>RIS ltd.</string>
 	<key>PayloadScope</key>
 	<string>System</string>
 	<key>PayloadType</key>
