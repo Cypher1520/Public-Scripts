@@ -120,7 +120,7 @@ Start-Transcript $scriptLog -Append
 # -----------------------------------------------
 write-host ""
 write-host "-Installing Package provider ... " -foreground yellow
-Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Confirm:$false
 
 
 # -----------------------------------------------
@@ -129,9 +129,9 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 write-host ""
 write-host "-Installing modules ... " -foreground yellow
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-Install-Module MSAL.PS -allowclobber -Scope AllUsers -Force
-Install-Module M365Documentation -allowclobber -Scope AllUsers -Force
-Install-Module PSWriteOffice -allowclobber -Scope AllUsers -Force
+Install-Module MSAL.PS -allowclobber -Scope AllUsers -Force -Confirm:$false
+Install-Module M365Documentation -allowclobber -Scope AllUsers -Force -Confirm:$false
+Install-Module PSWriteOffice -allowclobber -Scope AllUsers -Force -Confirm:$false
 
 # -----------------------------------------------
 # Import modules (into memory for script)

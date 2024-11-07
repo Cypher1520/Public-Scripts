@@ -34,23 +34,6 @@ New-Item -Path "$($env:ProgramData)" -Name "_Intune" -ItemType Directory -ErrorA
 
 Start-Transcript "$logDest\Transcripts\$ID-Uninstall.log" -Append
 
-# Install winget if not present
-$WingetPath = "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_*_8wekyb3d8bbwe\winget.exe"
-if (!(Test-Path $WingetPath)) {
-    $progressPreference = 'silentlyContinue'
-    Write-Information "Downloading WinGet and its dependencies..."
-    Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
-    Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx -OutFile Microsoft.VCLibs.x64.14.00.Desktop.appx
-    Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx -OutFile Microsoft.UI.Xaml.2.8.x64.appx
-    Add-AppxPackage Microsoft.VCLibs.x64.14.00.Desktop.appx
-    Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
-    Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle4
-    if (!(Test-Path $WingetPath)) {
-        Write-host "Winget install not successful, exiting"
-        Exit 1
-    }
-} 
-
 # Uninstall
 $result = (winget uninstall --exact --id $ID --silent --scope=machine).split("\")[-1]
 
