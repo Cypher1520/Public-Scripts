@@ -1,0 +1,1 @@
+xcopy "c:\ProgramData\Microsoft\IntuneManagementExtension\Logs\IntuneManagementExtension.log" "D:\" /y

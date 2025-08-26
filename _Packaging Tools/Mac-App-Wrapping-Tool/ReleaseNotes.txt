@@ -1,0 +1,8 @@
+1.2
+Rebuild the tool as 64-bit executable and notarize it to support macOS Catalina.
+
+1.1
+Add -r and -n parameters to override package bundle Id and package bundle version. Both are optional.
+
+1.0
+It's the first version of Microsoft Intune App Wrapping Tool for macOS. It will check the macOS package (.pkg) file and generate a .intunemac file to be imported into Intune Azure Portal.

@@ -1,0 +1,15 @@
+<!-- com.microsoft.Outlook -->
+<key>AllowedEmailDomains</key>
+<string>"ecosystem.ca", "ecosystem-energy.com"</string>
+<key>HideCanAddOtherAccountTypesTipText</key>
+<true/>
+<key>DisableExport</key>
+<true/>
+<key>HideFoldersOnMyComputerRootInFolderList</key>
+<true/>
+<key>AutomaticallyDownloadExternalContent</key>
+<integer>0</integer>
+<key>EnableNewOutlook</key>
+<integer>2</integer>
+<key>DefaultEmailAddressOrDomain</key>
+<string>{{mail}}</string>

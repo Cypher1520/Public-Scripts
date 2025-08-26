@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadDescription</key>
+			<string>Teams Screen Record allow non-admin approval</string>
+			<key>PayloadDisplayName</key>
+			<string>TeamsScreenRecord</string>
+			<key>PayloadIdentifier</key>
+			<string>ECD0D1FB-14CD-4FAE-8C3F-C97AAAED9278</string>
+			<key>PayloadOrganization</key>
+			<string>RIS ltd.</string>
+			<key>PayloadType</key>
+			<string>com.apple.TCC.configuration-profile-policy</string>
+			<key>PayloadUUID</key>
+			<string>928D053F-5C3A-45F3-8524-A5242881AE4E</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Services</key>
+			<dict>
+				<key>ScreenCapture</key>
+				<array>
+					<dict>
+						<key>Authorization</key>
+						<string>AllowStandardUserToSetSystemService</string>
+						<key>CodeRequirement</key>
+						<string>identifier "com.microsoft.teams" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = UBF8T346G9</string>
+						<key>Comment</key>
+						<string></string>
+						<key>Identifier</key>
+						<string>com.microsoft.teams</string>
+						<key>IdentifierType</key>
+						<string>bundleID</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Teams Screen Record allow non-admin approval</string>
+	<key>PayloadDisplayName</key>
+	<string>TeamsScreenRecord</string>
+	<key>PayloadIdentifier</key>
+	<string>ECD0D1FB-14CD-4FAE-8C3F-C97AAAED9278</string>
+	<key>PayloadOrganization</key>
+	<string>RIS ltd.</string>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>6252EFE6-A1DD-41BA-A7F8-7D530D22045A</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

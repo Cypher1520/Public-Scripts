@@ -1,0 +1,15 @@
+<!-- User > Library > Preferences > 
+com.teamviewer.teamviewer.preferences.Machine
+com.teamviewer.TeamViewer
+com.teamviewer.teamviewerhost
+-->
+
+<dict>
+	<key>Always_Online</key>
+	<integer>1</integer>
+	<key>PermanentPassword</key>
+	<data> CSZH+FlK5ojrqaQxxUYap1f3NOEvxd3q5VYgdQ+w4UR4wK1pSpwAw3ik7xc3wnX9nSH7 vOjkESxuQCoTMl/LpL4hgPJL53uSBQoM5yvVCUVUBP9h2RqTwIzCzERT4XeugO8rRxic Ma5mKfLRLJOL+1PNQrenwg1SgWgVyv90nzhjqR0ti8O06IbMz47fJBU/TANfcrxT+28v CyoF5gNkwT4Uvt0nLxvqOxW4+bpvbuHeWqzIeU4GshNzLzSE2211CI3SSRwQH4kgo8Gu 7HtjGln/aOynl8aJKyk/+s4zxw9fGXaFP+JzXWcrChHxGDkbt774pG28p/BvlXhCDEgH 6hB2rZByyKb7o7IXuQilAmSc7VG5UNXFQ14rhKnT6qyB/vxzvrAhrvIyoFOxZyeaqw==
+	</data>
+	<key>PermanentPasswordDate</key>
+	<string>20240325T171706</string>
+</dict>
