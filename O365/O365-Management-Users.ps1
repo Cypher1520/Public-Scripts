@@ -9,14 +9,14 @@ Expand All: Ctrl+K CTRL+J
 #-----------Remove Deleted User-----------#
     #Remove-MsolUser -UserPrincipalName "USER EMAIL" -Force -RemoveFromRecycleBin
 
-    Remove-MsolUser -UserPrincipalName landadmin1@wolfmidstream.com -Force -RemoveFromRecycleBin
+    Remove-MsolUser -UserPrincipalName USER@COMPANYEMAIL.com -Force -RemoveFromRecycleBin
 
 #-----------Get Users Shared Memberships-----------#
     #1
-    Get-Mailbox | Get-MailboxPermission -user "lgomez"
+    Get-Mailbox | Get-MailboxPermission -user "USER"
 
     #2
-    $user = "user@COMPANYEMAIL.com"
+    $user = "USER@COMPANYEMAIL.com"
     $mailbox=get-mailbox $user
     $dgs= Get-DistributionGroup
     
@@ -41,7 +41,7 @@ Expand All: Ctrl+K CTRL+J
     Remove-MsolUser -UserPrincipalName user@COMPANYEMAIL.onmicrosoft.com -Force -RemoveFromRecycleBin
 
 #-----------Add User Alias-----------#
-    Import-CSV "A:\Clouds\OneDrive - Stratiform Inc\Documents\GMP\O365Import.csv" | ForEach {Set-Mailbox $_.Mailbox -EmailAddresses @{add=$_.NewEmailAddress}}
+    Import-CSV "A:\Clouds\OneDrive - Stratiform Inc\Documnts\GMP\O365Import.csv"e | ForEach {Set-Mailbox $_.Mailbox -EmailAddresses @{add=$_.NewEmailAddress}}
 
 #-----------User Info-----------#
     
