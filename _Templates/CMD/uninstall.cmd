@@ -35,4 +35,4 @@ Chris Rockwell - Insight
     if exist %logfile% del /f %logfile%
     if exist "C:\ProgramData\AutopilotConfig\%filename%.tag" del "C:\ProgramData\AutopilotConfig\%filename%.tag"
 
-::Quit  
+::Quit

@@ -25,7 +25,7 @@ $administratorsMembers = $administratorsGroup.Invoke("Members") | ForEach-Object
 
 # Display the names of the members    
 $array = @($administratorsMembers)
-$itemToRemove = 'LAPSAdmin'
+$itemToRemove = 'MSCG-Admin'
 $array = $array | Where-Object { $_.Name -ne $itemToRemove }
 
 if ($array.count -gt 0) {
@@ -36,4 +36,3 @@ if ($array.count -gt 0) {
 else {
     exit 0
 }
-

@@ -23,9 +23,11 @@ Param
     [String]$action
     )
 
+$wallpaperPath = "C:\Windows\Web\Wallpaper"
+
 function installWallpaper {
-    Copy-Item -Path ".\DesktopWallpaper.jpg" -Destination "C:\Windows\Web\Wallpaper" -force
-    Copy-Item -Path ".\LockScreenWallpaper.jpg" -Destination "C:\Windows\Web\Wallpaper"-force
+    Copy-Item -Path ".\DesktopWallpaper.jpg" -Destination $wallpaperPath -force
+    Copy-Item -Path ".\LockScreenWallpaper.jpg" -Destination $wallpaperPath -force
 }
 
 function uninstallWallpaper {

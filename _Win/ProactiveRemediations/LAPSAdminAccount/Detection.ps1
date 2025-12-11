@@ -9,7 +9,7 @@ Notes:           Customize the script by editing Variable for admin account name
 #>
 
 # Define Variables
-$localAdminName = "LAPSAdmin"
+$localAdminName = "Harry"
 
 #=============Script Body=============
 try

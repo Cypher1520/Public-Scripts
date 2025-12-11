@@ -31,30 +31,31 @@
 
 #region Variables
 # Global Variables
-$fileName = $null       #fill in "filename.msi/exe"
+$fileName = $null       # fill in "filename.msi/exe"
 $installer = "Media\$fileName"
 $tag = $false           # use $true/$false to set creating tag files.
 
-#Log Variables
+# Log Variables
 $logDest = "$($env:ProgramData)\IntuneConfig"
 $logFile = "$logDest\$fileName.log"
 
 # MSI Variables
-#edit variables in below lists if necessary
-$msiArgumentList = @(   #add any arguments for msi installations, quote each line if strings
+# edit variables in below lists if necessary
+$msiArgumentList = @(   # add any arguments for msi installations, quote each line if strings
     "/i "
     $installer
     "/qb!"
     "/norestart"
     "/L*v"
     $logFile
-    #"ALLUSERS=1"
-    #"OTHERATTRIBUTE=ABC"
-    #"TRANSFORMS=transorm1.mst;transform2.mst"
+    # "ALLUSERS=1"
+    # "ACCEPT_EULA=YES"
+    # "OTHERATTRIBUTE=ABC"
+    # "TRANSFORMS=transorm1.mst;transform2.mst"
 )
 
 # EXE Variables
-$exeArgumentList = @(   #add any arguments for exe installations, quote each line if strings
+$exeArgumentList = @(   # add any arguments for exe installations, quote each line if strings
     
 )
 
@@ -64,7 +65,6 @@ $exeArgumentList = @(   #add any arguments for exe installations, quote each lin
 function InstallMSI {
     # Install
     Write-Host (Get-Date) "|" MSI Installing $fileName... -ForegroundColor Cyan
-    #$result = (Start-Process "msiexec.exe" -ArgumentList $msiArgumentList -Verb RunAs -PassThru -Wait).ExitCode
     $proc = Start-Process "msiexec.exe" -ArgumentList $msiArgumentList -Verb RunAs -PassThru
     $proc.WaitForExit()
     $result = $proc.ExitCode
@@ -75,7 +75,7 @@ function InstallMSI {
     }
 
     # PostInstall
-    #creates tag file\
+    # creates tag file\
     if ($tag -eq $true) {
         if (!(Test-Path "$env:ProgramData\IntuneConfig\$($fileName).tag")) {
             Write-Host (Get-Date) "|" Creating Tag file. -ForegroundColor Cyan
@@ -91,7 +91,6 @@ function InstallMSI {
 function InstallEXE {
     # Install
     Write-Host (Get-Date) "|" EXE Installing $fileName...
-    #$result = (Start-Process "$installer" -ArgumentList $exeArgumentList -Verb RunAs -PassThru -Wait).ExitCode
     $proc = Start-Process -FilePath "$installer" -ArgumentList $exeArgumentList -Verb RunAs -PassThru
     $proc.WaitForExit()
     $result = $proc.ExitCode
@@ -102,7 +101,7 @@ function InstallEXE {
     }
 
     # PostInstall
-    #creates tag file
+    # creates tag file
     if ($tag -eq $true) {
         if (!(Test-Path "$env:ProgramData\IntuneConfig\$($fileName).tag")) {
             Write-Host (Get-Date) "|" Creating Tag file. -ForegroundColor Cyan
@@ -126,7 +125,7 @@ if ("$env:PROCESSOR_ARCHITEW6432" -ne "ARM64") {
     }
 }
 
-#Log setup
+# Log setup
 if (!(Test-Path $logDest)) {
     New-Item -Path "$($env:ProgramData)" -Name "IntuneConfig" -ItemType Directory
 }

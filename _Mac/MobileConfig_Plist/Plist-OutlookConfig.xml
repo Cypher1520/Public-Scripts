@@ -1,6 +1,6 @@
 <!-- com.microsoft.Outlook -->
 <key>AllowedEmailDomains</key>
-<string>"ecosystem.ca", "ecosystem-energy.com"</string>
+<string>"highlinerfoods.com", "hlf.com"</string>
 <key>HideCanAddOtherAccountTypesTipText</key>
 <true/>
 <key>DisableExport</key>

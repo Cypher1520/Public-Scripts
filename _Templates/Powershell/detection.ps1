@@ -1,43 +1,54 @@
 <#
 .NOTES
-    Detection script for ......
+    File    : detection.ps1
+    Purpose : Intune Win32 App detection script template.
+    Author  : Chris Rockwell 
+    Email   : chris@r-is.tech | chris.rockwell@insight.com
+    Usage   : Return exit code 0 when the application is detected (no install required).
+              Return non-zero when detection fails (installer should run).
 
 .DESCRIPTION
-    Intune Commands
-        Install: powershell.exe -executionpolicy bypass .\install.ps1
-        Uninstall: powershell.exe -executionpolicy bypass .\uninstall.ps1
+    Minimal, easy-to-edit template for use as the "Detection script" in Intune Win32 app
+    packaging. The sample below checks for a tag file under a ProgramData path. Replace the
+    detection logic with whatever artifact your installer creates (file, registry key, product
+    version, etc.).
 
 .EXAMPLE
-    Detect from registry
-        $path = "HKLM:\SOFTWARE\..."
-        $value = "VALUE"
+    Run the following to get list of installed applications, then copy the DisplayName and paste into  $ProductName
+        $uninstallPaths = @(
+            "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
+            "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*"
+        )
 
-        #Detection Test
-        if (Test-Path -Path $path) {
-        Write-Host "Found Registry Entry" 
-        Return 0 
-        Exit 0
-        }
-    
-    Detect File
-        $path = "$env:ProgramData\AutopilotConfig\"
-        $file = "<TAGFILE>" + ".tag"
-
-        #Detection Test
-        if (Test-Path ($path+$file) ) {
-            Write-Host "Found $file" -ForegroundColor Green
-            Return 0 
-            Exit 0
+        foreach ($path in $uninstallPaths) {
+            Get-ItemProperty $path -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName } | Sort DisplayName | Select-Object DisplayName
         }
 #>
 
-#Variables
-$path = "$env:ProgramData\AutopilotConfig\"
-$file = "<FILENAME>" + ".tag"
+$productName = "$null" # Set DisplayName of app to detect, example above
 
-#Detection Test
-if (Test-Path ($path+$file) ) {
-    Write-Host "Found $file" -ForegroundColor Green
-    Return 0 
-    Exit 0
+# Registry paths for installed applications
+$uninstallPaths = @(
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*"
+)
+
+$found = $false
+
+foreach ($path in $uninstallPaths) {
+    $apps = Get-ItemProperty $path -ErrorAction SilentlyContinue | Where-Object {
+        $_.DisplayName -and $_.DisplayName -like "*$productName*"
+    }
+    if ($apps) {
+        $found = $true
+        break
+    }
+}
+
+if ($found) {
+    Write-Host "$productName Detected"
+    exit 0
+} else {
+    Write-Host "$productName Not Detected"
+    exit 1
 }

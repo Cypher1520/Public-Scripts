@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+; Disable Virtualization-Based Security (VBS)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard]
+"EnableVirtualizationBasedSecurity"=dword:00000000
+"HyperVVirtualizationBasedSecurityOptout"=dword:00000001
+
+; Disable Secure Kernel / KeyGuard
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\KeyGuard\Status]
+"IsSecureKernelRunning"=dword:00000000
+"KeyGuardEnabled"=dword:00000000
+
+; Make sure HVCI (Memory Integrity) is off
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity]
+"Enabled"=dword:00000000

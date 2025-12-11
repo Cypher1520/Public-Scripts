@@ -9,7 +9,7 @@ Notes:           Customize the script by editing Variable for admin account name
 #>
 
 # Define Variables
-$localAdminName = "LAPSAdmin"
+$localAdminName = "Harry"
 $minimumPasswordLength = 24
 
 # Define Fucntions
@@ -37,7 +37,9 @@ try {
     $newPwdSecStr = $newPwd | ConvertTo-SecureString -AsPlainText -Force
     $pwdSet = $True
     $localAdmin = New-LocalUser -PasswordNeverExpires -AccountNeverExpires -Name $localAdminName -Password $newPwdSecStr
-    #Write-CustomEventLog "$localAdminName created"
+    Write-CustomEventLog "$localAdminName created"
+    Enable-LocalUser -Name $localAdminName
+
     exit 0
 }
 catch {

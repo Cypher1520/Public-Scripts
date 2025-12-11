@@ -1,0 +1,33 @@
+{
+  "@odata.type": "#microsoft.graph.deviceManagementConfigurationPolicy",
+  "name": "MacOS - OIB - Device Security - D - Restrictions - v1.0",
+  "description": "Imported baseline",
+  "platforms": "macOS",
+  "technologies": "mdm,appleRemoteManagement",
+  "roleScopeTagIds": ["0"],
+  "settings": [
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSetting",
+      "settingInstance": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationGroupSettingCollectionInstance",
+        "settingDefinitionId": "com.apple.systempreferences_com.apple.systempreferences",
+        "groupSettingCollectionValue": [
+          {
+            "children": [
+              {
+                "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingCollectionInstance",
+                "settingDefinitionId": "com.apple.systempreferences_disabledpreferencepanes",
+                "simpleSettingCollectionValue": [
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationStringSettingValue",
+                    "value": "com.apple.AirDrop-Handoff-Settings.extension"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

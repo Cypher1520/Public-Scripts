@@ -2,7 +2,7 @@
 Connect-MgGraph -NoWelcome
 
 #Set time frame to search for devices
-$dt = (Get-Date).AddDays(-365)
+$dt = (Get-Date).AddDays(-5)
 
 #export entra devices to csv
 Get-MgDevice -All | Where { $_.ApproximateLastSignInDateTime -le $dt } | select-object -Property DeviceId, ID, AccountEnabled, OperatingSystem, OperatingSystemVersion, DisplayName, TrustType, ApproximateLastSignInDateTime | export-csv C:\Temp\RemovalList.csv -NoTypeInformation

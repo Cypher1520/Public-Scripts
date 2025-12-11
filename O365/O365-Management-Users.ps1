@@ -16,7 +16,7 @@ Expand All: Ctrl+K CTRL+J
     Get-Mailbox | Get-MailboxPermission -user "lgomez"
 
     #2
-    $user = "dfedyshen@accesspipeline.com"
+    $user = "user@COMPANYEMAIL.com"
     $mailbox=get-mailbox $user
     $dgs= Get-DistributionGroup
     
@@ -38,7 +38,7 @@ Expand All: Ctrl+K CTRL+J
     {Remove-MsolUser -UserPrincipalName $u.Username -Force -RemoveFromRecycleBin}
 
     	
-    Remove-MsolUser -UserPrincipalName accountspayable.wcs@accesspipeline.onmicrosoft.com -Force -RemoveFromRecycleBin
+    Remove-MsolUser -UserPrincipalName user@COMPANYEMAIL.onmicrosoft.com -Force -RemoveFromRecycleBin
 
 #-----------Add User Alias-----------#
     Import-CSV "A:\Clouds\OneDrive - Stratiform Inc\Documents\GMP\O365Import.csv" | ForEach {Set-Mailbox $_.Mailbox -EmailAddresses @{add=$_.NewEmailAddress}}
@@ -93,7 +93,7 @@ Expand All: Ctrl+K CTRL+J
 
 #-----------Clear MFA settings for user-----------#
     Get-MsolUser "USERPRINCIPALNAME" | Set-MSOLUSER $_.StrongAuthenticationMethods $null
-    Set-MsolUser -UserPrincipalName "mweisberg@accesspipeline.com" -StrongAuthenticationMethods @()
+    Set-MsolUser -UserPrincipalName "user@COMPANYEMAIL.com" -StrongAuthenticationMethods @()
 
 #-----------Force password change-----------#
     #Single user

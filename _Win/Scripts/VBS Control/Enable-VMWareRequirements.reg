@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+; Re-enable Virtualization-Based Security (VBS)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard]
+"EnableVirtualizationBasedSecurity"=dword:00000001
+"HyperVVirtualizationBasedSecurityOptout"=dword:00000000
+
+; Re-enable Secure Kernel / KeyGuard
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\KeyGuard\Status]
+"IsSecureKernelRunning"=dword:00000001
+"KeyGuardEnabled"=dword:00000001

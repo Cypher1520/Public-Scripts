@@ -12,7 +12,7 @@ Function Manage-Services {
     )
 
     try {
-        Start-Transcript -Path "C:\ProgramData\AutopilotConfig\$($ServiceName)_Management.Log" -Force -ErrorAction SilentlyContinue
+
         # Turn on service
         Get-Date
         $service = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
@@ -28,7 +28,6 @@ Function Manage-Services {
             }
             Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
         }
-        Stop-Transcript -ErrorAction SilentlyContinue
     }
 
     catch {
@@ -70,8 +69,10 @@ Function Manage-Registry {
     #endregion
 
     #region Process
+    Start-Transcript -Path "C:\ProgramData\IntuneConfig\$($ServiceName)_Management.Log" -Force -ErrorAction SilentlyContinue
+
     try {
-        Write-Host "Fixing TimeZone service statup type to MANUAL."
+        Write-Host "Starting TimeZone service."
         Manage-Services -ServiceName $ServiceName -Action $Action
         Write-Host "Setting Registry values"
         Manage-Registry
@@ -80,4 +81,6 @@ Function Manage-Registry {
     catch {
         Write-Error $_.Exception.Message
     }
+
+    Stop-Transcript -ErrorAction SilentlyContinue
     #endregion

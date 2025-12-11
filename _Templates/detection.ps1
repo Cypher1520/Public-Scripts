@@ -19,36 +19,75 @@
             "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
             "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*"
         )
-
         foreach ($path in $uninstallPaths) {
-            Get-ItemProperty $path -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName } | Select-Object DisplayName
+            Get-ItemProperty $path -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName } | Sort DisplayName | Select-Object DisplayName
         }
 #>
 
-$productName = "$null" # Set DisplayName of app to detect, example above
-
-# Registry paths for installed applications
-$uninstallPaths = @(
-    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
-    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*"
-)
+$fileName = $null # Filename to detect if product not registered in uninstall registry
+$productName = @() # Set DisplayName(s) of app(s) to detect - can be single string or array with @("Product1", "Product2")
+$detectionFilePath = $null # Path to the detection file
 
 $found = $false
 
-foreach ($path in $uninstallPaths) {
-    $apps = Get-ItemProperty $path -ErrorAction SilentlyContinue | Where-Object {
-        $_.DisplayName -and $_.DisplayName -like "*$productName*"
+# Check if productName is provided for registry-based detection
+if ($null -ne $productName -and $productName.Count -gt 0) {
+    # Ensure productName is treated as an array
+    $productNames = @($productName)
+    Write-Host "Using registry-based detection for product(s): $($productNames -join ', ')" -ForegroundColor Yellow
+    
+    # Registry paths for installed applications
+    $uninstallPaths = @(
+        "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*",
+        "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*"
+    )
+    
+    foreach ($path in $uninstallPaths) {
+        $apps = Get-ItemProperty $path -ErrorAction SilentlyContinue | Where-Object {
+            if ($_.DisplayName) {
+                # Check if DisplayName matches any of the product names
+                $matchFound = $false
+                foreach ($name in $productNames) {
+                    if ($_.DisplayName -like "*$name*") {
+                        $matchFound = $true
+                        break
+                    }
+                }
+                $matchFound
+            }
+        }
+        if ($apps) {
+            $found = $true
+            $detectedProduct = $apps[0].DisplayName
+            break
+        }
     }
-    if ($apps) {
-        $found = $true
-        break
+    
+    if ($found) {
+        Write-Host "Product Detected: $detectedProduct" -ForegroundColor Green
+        exit 0
+    } else {
+        Write-Host "None of the specified products detected: $($productNames -join ', ')" -ForegroundColor Red
+        exit 1
     }
 }
-
-if ($found) {
-    Write-Host "$productName Detected"
-    exit 0
-} else {
-    Write-Host "$productName Not Detected"
+# Use file-based detection if productName is null
+elseif ($null -ne $fileName -and $fileName.Trim() -ne "" -and $null -ne $detectionFilePath -and $detectionFilePath.Trim() -ne "") {
+    Write-Host "Using file-based detection for file: $fileName at path: $detectionFilePath" -ForegroundColor Yellow
+    
+    # Construct the full file path
+    $fullFilePath = Join-Path -Path $detectionFilePath -ChildPath $fileName
+    
+    # Check if the file exists
+    if (Test-Path -Path $fullFilePath -PathType Leaf) {
+        Write-Host "File $fileName detected at $fullFilePath" -ForegroundColor Green
+        exit 0
+    } else {
+        Write-Host "File $fileName not detected at $fullFilePath" -ForegroundColor Red
+        exit 1
+    }
+}
+else {
+    Write-Host "Error: Either productName must be specified for registry detection, or both fileName and detectionFilePath must be specified for file detection" -ForegroundColor Red
     exit 1
 }
