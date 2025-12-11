@@ -16,7 +16,7 @@ Expand All: Ctrl+K CTRL+J
 foreach ($u in $users) {Set-MsolUserLicense -UserPrincipalName chris.rockwell@travelalberta.com -RemoveLicenses "TravelAlberta:ENTERPRISEWITHSCAL"}
 
 #-----------Add License-----------#
-    % {Set-MsolUserLicense -UserPrincipalName $_.UserPrincipalName -AddLicenses "accesspipeline:ENTERPRISEPREMIUM"}
+    % {Set-MsolUserLicense -UserPrincipalName $_.UserPrincipalName -AddLicenses "COMPANY:ENTERPRISEPREMIUM"}
 
 #-----------Remove License-----------#
     #Get disabled users and remove licenses
